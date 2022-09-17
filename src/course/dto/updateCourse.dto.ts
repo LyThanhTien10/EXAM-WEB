@@ -1,14 +1,18 @@
-import { IsString, IsNotEmpty, IsNumber } from 'class-validator';
+import { IsString, IsNotEmpty, IsNumber } from 'class-validator'
 
 export class UpdateCourseDto {
   @IsNumber()
-  id: number;
+  id: number
 
   @IsString()
   @IsNotEmpty()
-  title: string;
+  title: string
 
   @IsString()
   @IsNotEmpty()
-  content: string;
+  status: string
+
+  @IsString()
+  @IsNotEmpty()
+  totalExam: number
 }
