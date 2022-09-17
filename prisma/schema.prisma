@@ -10,11 +10,59 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model User{
+  id  Int      @default(autoincrement()) @id
+  email String @unique
+  username String
+  hash String
+  salt String
+  role String
+  courses Course[]
+  refreshToken String
+  isVerify Boolean
+  lastLogin Int
+  createAt Int  
+  examInProgress Boolean
+  token       Token?     @relation(fields: [tokenId], references: [id])
+  tokenId     Int? @unique
+
+}
+
 model Course {
   id        Int      @default(autoincrement()) @id
   title     String
   status String
-  totalExam Int
+  totalExam Int @default(0)
+  sections  Section[]
+  exams   Exam[]
+  users User[]
 
 }
 
+model Section{
+  id Int      @default(autoincrement()) @id
+  course    Course?     @relation(fields: [courseId], references: [id])
+  courseId Int?
+  title String
+  index Int
+  exams Exam[]
+}
+
+model Exam{
+  id Int @default(autoincrement()) @id
+  course    Course?     @relation(fields: [courseId], references: [id])
+  courseId Int?
+  section Section? @relation(fields: [sectionId], references: [id])
+  sectionId Int?
+  type String 
+  index Int
+  quiz Int
+  duration Int
+}
+
+model Token{
+  id Int @default(autoincrement()) @id
+  user User?
+  token String
+  createAt Int
+}
