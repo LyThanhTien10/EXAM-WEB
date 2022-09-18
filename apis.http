@@ -1,9 +1,8 @@
 ## Create 1 course
-POST http://localhost:8080/courses
+POST http://localhost:3000/courses
 Content-Type: application/json
 
 {
-    "title": "NestJs",
-    "content": "Testing"
-
+    "title": "NestJs"
+ 
 }

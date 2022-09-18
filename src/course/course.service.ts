@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common'
 import { PrismaService } from '../prisma/prisma.service'
 import { PrismaClientKnownRequestError } from '@prisma/client/runtime'
-import { CourseNotFoundException } from './exceptions/postNotFound.exception'
+import { CourseNotFoundException } from './exceptions/courseNotFound.exception'
 import { CreateCourseDto } from './dto/createCourse.dto'
 import { PrismaError } from '../utils/prismaError'
 import { UpdateCourseDto } from './dto/updateCourse.dto'
