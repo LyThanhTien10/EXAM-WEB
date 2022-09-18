@@ -4,6 +4,7 @@ import { PrismaModule } from './prisma/prisma.module'
 import { UserModule } from './user/user.module'
 import { CourseModule } from './course/course.module'
 import { SectionModule } from './section/section.module'
+import { ExamModule } from './exam/exam.module'
 import { ConfigModule } from '@nestjs/config'
 import * as Joi from '@hapi/joi'
 
@@ -13,6 +14,7 @@ import * as Joi from '@hapi/joi'
     UserModule,
     CourseModule,
     SectionModule,
+    ExamModule,
     ConfigModule.forRoot({
       validationSchema: Joi.object({
         PORT: Joi.number(),
