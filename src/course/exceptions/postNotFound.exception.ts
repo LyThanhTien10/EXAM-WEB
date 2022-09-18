@@ -1,7 +1,7 @@
-import { NotFoundException } from '@nestjs/common';
+import { NotFoundException } from '@nestjs/common'
 
 export class CourseNotFoundException extends NotFoundException {
-  constructor(courseId: number) {
-    super(`Course with id ${courseId} not found`);
+  constructor(courseId: string) {
+    super(`Course with id ${courseId} not found`)
   }
 }

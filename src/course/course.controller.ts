@@ -1,18 +1,8 @@
-import {
-  Body,
-  Controller,
-  Delete,
-  Get,
-  Param,
-  Patch,
-  Post,
-  Put,
-} from '@nestjs/common';
-import { CourseService } from './course.service';
-import { CreateCourseDto } from './dto/createCourse.dto';
-import { UpdateCourseDto } from './dto/updateCourse.dto';
-import { FindOneParams } from 'src/utils/findOneParams';
-import { ApiBody, ApiTags } from '@nestjs/swagger';
+import { Body, Controller, Delete, Get, Param, Patch, Post, Put } from '@nestjs/common'
+import { CourseService } from './course.service'
+import { CreateCourseDto } from './dto/createCourse.dto'
+import { UpdateCourseDto } from './dto/updateCourse.dto'
+import { ApiBody, ApiTags } from '@nestjs/swagger'
 
 @ApiTags('Course')
 @Controller('courses')
@@ -21,29 +11,26 @@ export class CourseController {
 
   @Get()
   async getCoures() {
-    return this.courseService.getCoures();
+    return this.courseService.getCoures()
   }
 
   @Get(':id')
-  getCourseById(@Param() { id }: FindOneParams) {
-    return this.courseService.getCourseById(Number(id));
+  getCourseById(@Param('id') id: string) {
+    return this.courseService.getCourseById(id)
   }
 
   @Post()
   async createCourse(@Body() course: CreateCourseDto) {
-    return this.courseService.createCourse(course);
+    return this.courseService.createCourse(course)
   }
 
   @Put(':id')
-  async updatePost(
-    @Param() { id }: FindOneParams,
-    @Body() course: UpdateCourseDto,
-  ) {
-    return this.courseService.updateCourse(Number(id), course);
+  async updatePost(@Param() id: string, @Body() course: UpdateCourseDto) {
+    return this.courseService.updateCourse(id, course)
   }
 
   @Delete(':id')
-  async deletePost(@Param() { id }: FindOneParams) {
-    return this.courseService.deleteCourse(Number(id));
+  async deletePost(@Param() id: string) {
+    return this.courseService.deleteCourse(id)
   }
 }

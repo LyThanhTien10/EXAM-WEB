@@ -11,7 +11,7 @@ datasource db {
 }
 
 model User{
-  id  Int      @default(autoincrement()) @id
+  id  String @id @default(dbgenerated("gen_random_uuid()"))
   email String @unique
   username String
   hash String
@@ -22,38 +22,37 @@ model User{
   isVerify Boolean
   lastLogin Int
   createAt Int  
-  examInProgress Boolean
+  examInProgress String?
   token       Token?     @relation(fields: [tokenId], references: [id])
-  tokenId     Int? @unique
+  tokenId     String? @unique
 
 }
 
 model Course {
-  id        Int      @default(autoincrement()) @id
+  id  String @id @default(dbgenerated("gen_random_uuid()"))
   title     String
   status String
   totalExam Int @default(0)
   sections  Section[]
   exams   Exam[]
   users User[]
-
 }
 
 model Section{
-  id Int      @default(autoincrement()) @id
+  id String @id @default(dbgenerated("gen_random_uuid()"))
   course    Course?     @relation(fields: [courseId], references: [id])
-  courseId Int?
+  courseId String?
   title String
   index Int
   exams Exam[]
 }
 
 model Exam{
-  id Int @default(autoincrement()) @id
+  id String @id @default(dbgenerated("gen_random_uuid()"))
   course    Course?     @relation(fields: [courseId], references: [id])
-  courseId Int?
+  courseId String?
   section Section? @relation(fields: [sectionId], references: [id])
-  sectionId Int?
+  sectionId String?
   type String 
   index Int
   quiz Int
@@ -61,7 +60,7 @@ model Exam{
 }
 
 model Token{
-  id Int @default(autoincrement()) @id
+  id String @id @default(dbgenerated("gen_random_uuid()"))
   user User?
   token String
   createAt Int
