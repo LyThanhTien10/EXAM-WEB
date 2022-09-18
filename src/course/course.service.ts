@@ -10,6 +10,10 @@ import { UpdateCourseDto } from './dto/updateCourse.dto'
 export class CourseService {
   constructor(private readonly prismaService: PrismaService) {}
 
+  /**
+   * A method that fetches the courses from the database
+   * @returns A  the list of courses
+   */
   async getCoures() {
     return this.prismaService.course.findMany()
   }
