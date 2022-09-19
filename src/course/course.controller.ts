@@ -25,7 +25,7 @@ export class CourseController {
   }
 
   @Put(':id')
-  async updatePost(@Param() id: string, @Body() course: UpdateCourseDto) {
+  async updateCourse(@Param() id: string, @Body() course: UpdateCourseDto) {
     return this.courseService.updateCourse(id, course)
   }
 
