@@ -12,7 +12,7 @@ Content-Type: application/json
 
 GET http://localhost:3000/courses
 
-#### Create 1 user
+#### Sign up
 POST http://localhost:3000/auth/register
 Content-Type: application/json
 
@@ -21,3 +21,16 @@ Content-Type: application/json
   "username": "tester69",
   "password": "Tester69"
 }
+### Login
+POST http://localhost:3000/auth/log-in
+Content-Type: application/json
+
+{
+  "email": "test@gmail.com",
+  "password": "Tester69"
+}
+
+### Logout
+POST http://localhost:3000/auth/log-out
+
+

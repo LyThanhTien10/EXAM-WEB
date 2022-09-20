@@ -7,7 +7,7 @@ import { SectionModule } from './section/section.module'
 import { ExamModule } from './exam/exam.module'
 import { ConfigModule } from '@nestjs/config'
 import { AuthModule } from './auth/auth.module'
-import { DatabaseModule } from './database/database.module';
+import { DatabaseModule } from './database/database.module'
 import * as Joi from '@hapi/joi'
 
 @Module({
@@ -24,6 +24,8 @@ import * as Joi from '@hapi/joi'
         POSTGRES_PASSWORD: Joi.string().required(),
         POSTGRES_DB: Joi.string().required(),
         PORT: Joi.number(),
+        JWT_SECRET: Joi.string().required(),
+        JWT_EXPIRATION_TIME: Joi.string().required(),
       }),
     }),
     AuthModule,
